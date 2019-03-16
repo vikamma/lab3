@@ -1,0 +1,17 @@
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\Matsiuk02.csprojAssemblyReference.cache
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\MainWindow.baml
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\MainWindow.g.cs
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\App.g.cs
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\Matsiuk02_MarkupCompile.cache
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\Matsiuk02.g.resources
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\Matsiuk02.Properties.Resources.resources
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\Matsiuk02.csproj.GenerateResource.cache
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\Matsiuk02.csproj.CoreCompileInputs.cache
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\Views\PersonInfoView.g.cs
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\Matsiuk02_MarkupCompile.lref
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\bin\Debug\Matsiuk02.exe.config
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\bin\Debug\Matsiuk02.exe
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\bin\Debug\Matsiuk02.pdb
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\Views\PersonInfoView.baml
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\Matsiuk02.exe
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\Matsiuk02.pdb
