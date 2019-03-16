@@ -1,186 +1,225 @@
-﻿using Matsiuk02.Exeptions;
+﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System.Text.RegularExpressions;
 
 namespace Matsiuk02.Models
 
 {
+    public class PersonCreationException : Exception
+    {
+        public PersonCreationException(string message)
+            : base(message)
+        {
+        }
+    }
 
-  public class Person
+    public class WrongNameException : PersonCreationException
+    {
+        public WrongNameException(string message)
+            : base(message)
+        {
+        }
+    }
+
+    public class WrongSurnameException : PersonCreationException
+    {
+        public WrongSurnameException(string message)
+            : base(message)
+        {
+        }
+    }
+
+    public class WrongEmailException : PersonCreationException
+    {
+        public WrongEmailException(string givenEmail)
+            : base($"Email {givenEmail} is not valid!")
+        {
+        }
+    }
+
+    public class WrongBirthdayEarlyException : PersonCreationException
+    {
+        public WrongBirthdayEarlyException(DateTime birthday)
+            : base($"Birthday {birthday.ToShortDateString()} is not valid!")
+        {
+        }
+    }
+    public class WrongBirthdayLateException : PersonCreationException
+    {
+        public WrongBirthdayLateException(DateTime birthday)
+            : base($"Birthday {birthday.ToShortDateString()} is not valid!")
+        {
+        }
+    }
+
+
+    public class Person
     {
 
-       
-        private string _name;
-        private string _surname;
-        private string _email;
-        private DateTime _date;
-      
+
+        internal readonly string Name;
+        internal readonly string Surname;
+        internal readonly string Email;
+        internal readonly  DateTime Date;
 
 
-
-        internal string Surname
-        {
-            get { return _surname; }
-            private set { _surname = value; }
-        }
-
-        internal string Name
-        {
-            get { return _name; }
-            private set { _name = value; }
-        }
-
-        internal string Email
-        {
-            get { return _email; }
-            private set {
-                SignInValidator.ValidateEmail(this);
-                _email = value; }
-        }
-
-        internal DateTime Date
-        {
-
-            get { return _date; }
-            private set
-            {
-                SignInValidator.ValidateBirthday(this);
-                _date = value;
-            }
-        }
 
         #region Constructor
 
         public Person(string name, string surname, string email, DateTime date)
-
         {
-         
-            _name = name;
-            _surname = surname;
-            _email = email;
-            _date = date;
-            new SignInValidator(this);
+            string _numb = "1234567890";
+            if (name.Length < 2 || name.Contains(_numb))
+            {
+                throw new WrongNameException($"Name {name} is too small or conteins numbers");
+            }
+            if (surname.Length < 2 || surname.Contains(_numb))
+            {
+                throw new WrongSurnameException($"Name {name} is too small or conteins numbers");
+            }
+            Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            if (!emailRegex.IsMatch(Email))
+            {
+                throw new WrongEmailException(Email);
+            }
+           
+
+            
+            if (Age < 0 )
+            {
+                throw new WrongBirthdayEarlyException(Date);
+            }
+            if ( Age > 135)
+            {
+                throw new WrongBirthdayLateException(Date);
+            }
+
+
+            Name = name;
+            Surname = surname;
+            Email = email;
+            Date = date;
         }
 
         public Person(string name, string surname, string email)
         {
 
-            _name = name;
-            _surname = surname;
-            _email = email;
-            _date = DateTime.Now;
-            new SignInValidator(this);
+            Name = name;
+            Surname = surname;
+            Email = email;
+            Date = DateTime.Now;
+
         }
 
         public Person(string name, string surname, DateTime date)
         {
 
-            _name = name;
-            _surname = surname;
-            _email = "default@ukr.net";
-            _date = date;
-            new SignInValidator(this);
+            Name = name;
+            Surname = surname;
+            Email = "default@ukr.net";
+            Date = date;
+
         }
 
         #endregion
 
         internal bool IsAdult
         {
-            get { return UserAdult(_date); }
+        
+            get { return Age >= 18; }
+        
 
         }
 
         internal string Zodiac1
         {
-            get { return GetWesternHoroscope(_date); }
+            get { return GetWesternHoroscope(); }
 
         }
 
         internal string Zodiac2
         {
-            get { return GetChinaHoroscope(_date); }
+            get { return GetChinaHoroscope(); }
 
         }
 
         internal bool IsBirthday
         {
-            get { return (_date.CompareTo(DateTime.Today) == 0) ? true : false; }
+            get { return (Date.CompareTo(DateTime.Today) == 0) ? true : false; }
         }
 
-     
-        public bool UserAdult(DateTime _date)
+
+        private int  Age
         {
-            DateTime currentDate = DateTime.Parse(DateTime.Now.Date.ToShortDateString());
-            int _age = currentDate.Year - _date.Year;
-            if (currentDate.Month < _date.Month)
+        
+            get
             {
-                 --_age;
+                int years = DateTime.Today.Year - Date.Year;
+                if (DateTime.Today.Month < Date.Month)
+                {
+                    years--;
+                }
+                else if (DateTime.Today.Month == Date.Month)
+                {
+                    if (DateTime.Today.Day < Date.Day)
+                    {
+                        years--;
+                    }
+                }
+
+                return years;
             }
-            else if ((currentDate.Month >= _date.Month)
-                     && (currentDate.Day < _date.Day))
-            {
-                 --_age;
-            }
-
-            if (_age >= 18)
-                return true;
-            
-
-            return false;
-
         }
 
-        public string GetWesternHoroscope(DateTime _date)
+        
+
+        public string GetWesternHoroscope()
         {
-            switch (_date.Month)
+            switch (Date.Month)
             {
                 case 1:
-                    return _date.Day <= 19 ? "Capricorn" : "Aquarius";
+                    return Date.Day <= 19 ? "Capricorn" : "Aquarius";
                 case 2:
-                    return _date.Day <= 18 ? "Aquarius" : "Pisces";
+                    return Date.Day <= 18 ? "Aquarius" : "Pisces";
 
                 case 3:
-                    return _date.Day <= 20 ? "Pisces" : "Aries";
+                    return Date.Day <= 20 ? "Pisces" : "Aries";
 
                 case 4:
-                    return _date.Day <= 19 ? "Aries" : "Taurus";
+                    return Date.Day <= 19 ? "Aries" : "Taurus";
 
                 case 5:
-                    return _date.Day <= 20 ? "Taurus" : "Gemini";
+                    return Date.Day <= 20 ? "Taurus" : "Gemini";
 
                 case 6:
-                    return _date.Day <= 20 ? "Gemini" : "Cancer";
+                    return Date.Day <= 20 ? "Gemini" : "Cancer";
 
                 case 7:
-                    return _date.Day <= 22 ? "Cancer" : "Leo";
+                    return Date.Day <= 22 ? "Cancer" : "Leo";
 
                 case 8:
-                    return _date.Day <= 22 ? "Leo" : "Virgo";
+                    return Date.Day <= 22 ? "Leo" : "Virgo";
 
                 case 9:
-                    return _date.Day <= 22 ? "Virgo" : "Libra";
+                    return Date.Day <= 22 ? "Virgo" : "Libra";
 
                 case 10:
-                    return _date.Day <= 22 ? "Libra" : "Scorpio";
+                    return Date.Day <= 22 ? "Libra" : "Scorpio";
 
                 case 11:
-                    return _date.Day <= 21 ? "Scorpio" : "Sagittarius";
+                    return Date.Day <= 21 ? "Scorpio" : "Sagittarius";
 
                 case 12:
-                    return _date.Day <= 21 ? "Sagittarius" : "Capricorn";
+                    return Date.Day <= 21 ? "Sagittarius" : "Capricorn";
 
             }
 
             return "";
         }
 
-        public string GetChinaHoroscope(DateTime _date)
+        public string GetChinaHoroscope()
         {
-            switch ((_date.Year - 4) % 12)
+            switch ((Date.Year - 4) % 12)
             {
                 case 0:
                     return "Rat";
@@ -211,6 +250,6 @@ namespace Matsiuk02.Models
 
             return "";
         }
+
     }
 }
-

@@ -19,15 +19,15 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Surname, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Name, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Zodiac1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Zodiac2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="{Binding IsAdult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding IsBirthday, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Email, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Date, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Zodiac1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Zodiac2, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="{Binding IsAdult, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding IsBirthday, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
 
     </Grid>
 </Window>

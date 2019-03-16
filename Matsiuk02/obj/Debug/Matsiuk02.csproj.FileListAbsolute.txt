@@ -1,4 +1,3 @@
-C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\Matsiuk02.csprojAssemblyReference.cache
 C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\MainWindow.baml
 C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\MainWindow.g.cs
 C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\App.g.cs

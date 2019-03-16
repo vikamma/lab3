@@ -55,15 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Exeptions\DistantPastBirthdayException.cs" />
-    <Compile Include="Exeptions\FutureBirthdayException.cs" />
-    <Compile Include="Exeptions\InvalidEmailExeption.cs" />
-    <Compile Include="Exeptions\SignInValidator.cs" />
-    <Compile Include="Tool\Navigation\BaseNavigationModel.cs" />
-    <Compile Include="Tool\Navigation\IContentOwner.cs" />
-    <Compile Include="Tool\Navigation\INavigatable.cs" />
-    <Compile Include="Tool\Navigation\INavigationModel.cs" />
-    <Compile Include="Tool\Navigation\InitializationNavigationModel.cs" />
     <Compile Include="Tool\RelayCommand.cs" />
     <Compile Include="ViewModel\PersonInfoViewModel.cs" />
     <Compile Include="ViewModel\PersonRegisterViewModel.cs" />
