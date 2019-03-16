@@ -14,3 +14,4 @@ C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\bin\Debug\Matsiuk02.pdb
 C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\Views\PersonInfoView.baml
 C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\Matsiuk02.exe
 C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\Matsiuk02.pdb
+C:\Users\Victoria\Desktop\Matsiuk02\Matsiuk02\obj\Debug\Matsiuk02.csprojAssemblyReference.cache

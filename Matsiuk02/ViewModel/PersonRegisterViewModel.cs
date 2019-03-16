@@ -79,7 +79,7 @@ namespace Matsiuk02.ViewModel
         }
 
         //this is used to keep track of empty birthday field
-       
+        public string DateText { get; set; }
 
         public RelayCommand Proceed
         {
@@ -87,9 +87,11 @@ namespace Matsiuk02.ViewModel
             {
                 return _signInCommand ?? (_signInCommand = new RelayCommand(RegisterImpl,
                            o => !string.IsNullOrWhiteSpace(_name) &&
-                                !string.IsNullOrWhiteSpace(_surname) &&
+                                !string.IsNullOrWhiteSpace(_surname)
+                               &&
                                 !string.IsNullOrWhiteSpace(_email) &&
-                                !string.IsNullOrWhiteSpace(_date.ToString())));
+                               !string.IsNullOrWhiteSpace(DateText)
+                              ));
                                 
             }
         }
@@ -104,14 +106,14 @@ namespace Matsiuk02.ViewModel
                 try
                 {
                     person = new Person(_name, _surname, _email, _date);
-                }
+            }
                 catch (PersonCreationException e)
-                {
-                    MessageBox.Show(e.Message);
-                }
+            {
+                MessageBox.Show(e.Message);
+            }
 
-              
-            }));
+
+        }));
             if (person == null)
                 return;
 

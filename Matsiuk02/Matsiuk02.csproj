@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\DateTimeExtentions.cs" />
     <Compile Include="Tool\RelayCommand.cs" />
     <Compile Include="ViewModel\PersonInfoViewModel.cs" />
     <Compile Include="ViewModel\PersonRegisterViewModel.cs" />

@@ -78,18 +78,18 @@ namespace Matsiuk02.Models
                 throw new WrongSurnameException($"Name {name} is too small or conteins numbers");
             }
             Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-            if (!emailRegex.IsMatch(Email))
-            {
-                throw new WrongEmailException(Email);
-            }
-           
+            //if (!emailRegex.IsMatch(Email))
+            //{
+            //    throw new WrongEmailException(Email);
+            //}
 
-            
-            if (Age < 0 )
+
+
+            if (Age < 0)
             {
                 throw new WrongBirthdayEarlyException(Date);
             }
-            if ( Age > 135)
+            if (Age > 135)
             {
                 throw new WrongBirthdayLateException(Date);
             }
@@ -122,14 +122,14 @@ namespace Matsiuk02.Models
         }
 
         #endregion
-
-        internal bool IsAdult
-        {
+        public bool IsAdult => DateTime.Today.YearsPassedCnt(Date) >= 18;
+        //internal bool IsAdult
+        //{
         
-            get { return Age >= 18; }
+        //    get { return Age >= 18; }
         
 
-        }
+        //}
 
         internal string Zodiac1
         {
