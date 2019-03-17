@@ -1,177 +1,85 @@
-﻿
+﻿using Matsiuk02.Exeptions;
 using System;
 using System.Text.RegularExpressions;
 
 namespace Matsiuk02.Models
-
 {
-    public class PersonCreationException : Exception
-    {
-        public PersonCreationException(string message)
-            : base(message)
-        {
-        }
-    }
-
-    public class WrongNameException : PersonCreationException
-    {
-        public WrongNameException(string message)
-            : base(message)
-        {
-        }
-    }
-
-    public class WrongSurnameException : PersonCreationException
-    {
-        public WrongSurnameException(string message)
-            : base(message)
-        {
-        }
-    }
-
-    public class WrongEmailException : PersonCreationException
-    {
-        public WrongEmailException(string givenEmail)
-            : base($"Email {givenEmail} is not valid!")
-        {
-        }
-    }
-
-    public class WrongBirthdayEarlyException : PersonCreationException
-    {
-        public WrongBirthdayEarlyException(DateTime birthday)
-            : base($"Birthday {birthday.ToShortDateString()} is not valid!")
-        {
-        }
-    }
-    public class WrongBirthdayLateException : PersonCreationException
-    {
-        public WrongBirthdayLateException(DateTime birthday)
-            : base($"Birthday {birthday.ToShortDateString()} is not valid!")
-        {
-        }
-    }
-
 
     public class Person
     {
-
-
         internal readonly string Name;
         internal readonly string Surname;
         internal readonly string Email;
-        internal readonly  DateTime Date;
-
-
-
-        #region Constructor
+        internal readonly DateTime Date;
 
         public Person(string name, string surname, string email, DateTime date)
         {
-            string _numb = "1234567890";
-            if (name.Length < 2 || name.Contains(_numb))
+           
+            if (name.Length <= 1 || name.Contains("0") || name.Contains("1") || name.Contains("2") || name.Contains("3") || name.Contains("4") || name.Contains("5") || name.Contains("6") || name.Contains("7") || name.Contains("8") || name.Contains("9"))
             {
-                throw new WrongNameException($"Name {name} is too small or conteins numbers");
+                throw new WrongNameException();
             }
-            if (surname.Length < 2 || surname.Contains(_numb))
+            if (surname.Length <= 1 || surname.Contains("0") || surname.Contains("1") || surname.Contains("2") || surname.Contains("3") || surname.Contains("4") || surname.Contains("5") || surname.Contains("6") || surname.Contains("7") || surname.Contains("8") || surname.Contains("9"))
             {
-                throw new WrongSurnameException($"Name {name} is too small or conteins numbers");
+                throw new WrongSurnameException();
             }
+
             Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-            //if (!emailRegex.IsMatch(Email))
-            //{
-            //    throw new WrongEmailException(Email);
-            //}
-
-
-
-            if (Age < 0)
+            if (!emailRegex.IsMatch(email))
             {
-                throw new WrongBirthdayEarlyException(Date);
-            }
-            if (Age > 135)
-            {
-                throw new WrongBirthdayLateException(Date);
+                throw new WrongEmailException(email);
             }
 
+            var yearsDif = DateTime.Today.HowYearsOld(date);
+            if (yearsDif < 0 )
+            {
+                throw new WrongBirthdayEarlyException(name);
+            }
+
+            if (yearsDif > 135)
+            {
+                throw new WrongBirthdayLateException(name);
+            }
 
             Name = name;
             Surname = surname;
             Email = email;
             Date = date;
         }
-
-        public Person(string name, string surname, string email)
+        public Person(string name, string surname, DateTime date) 
         {
+            Name = name;
+            Surname = surname;
+            Email = "default@email.com";
+            Date = date;
+        }
 
+        public Person(string name, string surname, string email) 
+        {
             Name = name;
             Surname = surname;
             Email = email;
             Date = DateTime.Now;
-
-        }
-
-        public Person(string name, string surname, DateTime date)
-        {
-
-            Name = name;
-            Surname = surname;
-            Email = "default@ukr.net";
-            Date = date;
-
-        }
-
-        #endregion
-        public bool IsAdult => DateTime.Today.YearsPassedCnt(Date) >= 18;
-        //internal bool IsAdult
-        //{
-        
-        //    get { return Age >= 18; }
-        
-
-        //}
-
-        internal string Zodiac1
-        {
-            get { return GetWesternHoroscope(); }
-
-        }
-
-        internal string Zodiac2
-        {
-            get { return GetChinaHoroscope(); }
-
-        }
-
-        internal bool IsBirthday
-        {
-            get { return (Date.CompareTo(DateTime.Today) == 0) ? true : false; }
         }
 
 
-        private int  Age
+        public bool IsAdult => DateTime.Today.HowYearsOld(Date) >= 18;
+        public bool IsBirthday => DateTime.Today.Day == Date.Day && DateTime.Today.Month == Date.Month;
+
+        public string Zodiac1
         {
-        
             get
             {
-                int years = DateTime.Today.Year - Date.Year;
-                if (DateTime.Today.Month < Date.Month)
-                {
-                    years--;
-                }
-                else if (DateTime.Today.Month == Date.Month)
-                {
-                    if (DateTime.Today.Day < Date.Day)
-                    {
-                        years--;
-                    }
-                }
-
-                return years;
+                return GetChinaHoroscope();
             }
         }
 
-        
+        public string Zodiac2
+        {
+            get { return GetWesternHoroscope(); }
+        }
+
+
 
         public string GetWesternHoroscope()
         {

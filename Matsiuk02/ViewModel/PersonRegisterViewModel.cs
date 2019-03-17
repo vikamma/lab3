@@ -1,16 +1,12 @@
 ﻿using Matsiuk02.Models;
 using Matsiuk02.Tool;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Matsiuk02.Views;
-
-using System.Threading;
+using Matsiuk02.Exeptions;
 
 namespace Matsiuk02.ViewModel
 {
@@ -78,8 +74,8 @@ namespace Matsiuk02.ViewModel
             }
         }
 
-        //this is used to keep track of empty birthday field
-        public string DateText { get; set; }
+
+    
 
         public RelayCommand Proceed
         {
@@ -90,7 +86,7 @@ namespace Matsiuk02.ViewModel
                                 !string.IsNullOrWhiteSpace(_surname)
                                &&
                                 !string.IsNullOrWhiteSpace(_email) &&
-                               !string.IsNullOrWhiteSpace(DateText)
+                               !string.IsNullOrWhiteSpace(_date.ToString())
                               ));
                                 
             }

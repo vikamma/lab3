@@ -1,11 +1,6 @@
 ﻿using Matsiuk02.Models;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Matsiuk02.ViewModel
 {
@@ -13,8 +8,8 @@ namespace Matsiuk02.ViewModel
     {
         private readonly Person _person;
 
-        public string Name => $"Your name:\n{_person.Name}";
-        public string Surname => $"Your surname:\n{_person.Surname}";
+        public string Name => $"Your first name:\n{_person.Name}";
+        public string Surname => $"Your last name:\n{_person.Surname}";
         public string Email => $"Your email:\n{_person.Email}";
         public string Date => $"Your birthday:\n{_person.Date.ToShortDateString()}";
         public string Zodiac1 => $"Your sun sign:\n{_person.Zodiac1}";

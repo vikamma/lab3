@@ -55,6 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Exeptions\RersonCreationException.cs" />
+    <Compile Include="Exeptions\WrongBirthdayEarlyException.cs" />
+    <Compile Include="Exeptions\WrongBirthdayLateException.cs" />
+    <Compile Include="Exeptions\WrongEmailException.cs" />
+    <Compile Include="Exeptions\WrongNameException.cs" />
+    <Compile Include="Exeptions\WrongSurnameException.cs" />
     <Compile Include="Models\DateTimeExtentions.cs" />
     <Compile Include="Tool\RelayCommand.cs" />
     <Compile Include="ViewModel\PersonInfoViewModel.cs" />
